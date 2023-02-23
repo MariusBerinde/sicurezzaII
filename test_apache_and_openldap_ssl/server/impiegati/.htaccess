@@ -1,3 +1,0 @@
-SSLRequireSSL
-SSLVerifyClient require
-SSLVerifyDepth 10
