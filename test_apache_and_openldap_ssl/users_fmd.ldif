@@ -1,0 +1,35 @@
+dn: dc=fmd,dc=marius,dc=com
+dc: fmd
+objectClass: top
+objectClass: domain
+
+dn: ou=impiegato,dc=fmd,dc=marius,dc=com
+ou: impiegato
+objectClass: top
+objectClass: organizationalUnit
+
+dn: ou=dirigente,dc=fmd,dc=marius,dc=com
+ou: dirigente
+objectClass: top
+objectClass: organizationalUnit
+
+dn: cn=Altair Alighieri,ou=dirigente,dc=fmd,dc=marius,dc=com
+objectclass: inetOrgPerson
+cn: Altair Alighieri 
+sn: Alighieri
+uid: Altair
+userpassword: prova
+mail: altair@di.unito.it
+ou: dirigente
+
+
+dn: cn=Ezio Auditore,ou=impiegato,dc=fmd,dc=marius,dc=com
+objectclass: inetOrgPerson
+cn: Ezio Auditore 
+sn: Auditore
+uid: Ezio
+userpassword: prova
+homephone: 555-111-2223
+mail: ezio@di.unito.it
+ou: impiegato
+
