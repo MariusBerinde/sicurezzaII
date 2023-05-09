@@ -1,0 +1,42 @@
+version: "3.2"
+services:
+    apache:
+      image: ./my_apache  
+      container_name: apache_ldap 
+     # build: ./docker_apache/
+      volumes:
+        - ./docker_apache/server:/var/www/html
+      #  - ./docker_apache/conf_pwd/:/usr/local/apache2/
+        - ./docker_apache/etc_apache2/:/etc/apache2/
+      ports:
+          - 443:443
+      restart: unless-stopped
+
+    ldap:
+      image: osixia/openldap
+      container_name: ldap-service
+      ports:
+        - 389:389
+        - 636:636
+      restart: unless-stopped
+      environment:
+        - LDAP_ORGANISATION=mariusBerinde Inc.
+        - LDAP_DOMAIN=mariusBerinde.org
+        - LDAP_BASE_DN=mariusBerinde.org
+        - LDAP_ADMIN_PASSWORD=admin
+        - LDAP_CONFIG_PASSWORD=config
+
+
+    ldapdmin:
+      image: osixia/phpldapadmin
+      container_name: phpldapadmin
+      ports:
+        - 8443:443
+        - 8080:80
+      environment:
+        - PHPLDAPADMIN_LDAP_HOSTS=ldap-service
+      restart: unless-stopped
+    
+networks:
+  default:
+    name: ldap_network

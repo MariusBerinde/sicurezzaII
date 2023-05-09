@@ -1,0 +1,13 @@
+version: "3.2"
+services:
+    apache:
+      image: php 
+      container_name: my_apache
+      volumes:
+        - C:\Users\Utente\Desktop\es_3_sicurezza:/var/www/html
+        - ./conf_pwd/:/usr/local/apache2/
+        - ./etc_apache2/:/etc/apache2/
+      ports:
+          - 80:80
+      restart: unless-stopped
+
